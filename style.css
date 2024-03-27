@@ -1,0 +1,139 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    background: #060AB2;
+  }
+  
+  .memory-game {
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+  }
+  
+  .memory-card {
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    margin: 5px;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  }
+  
+  .memory-card:active {
+    transform: scale(0.97);
+    transition: transform .2s;
+  }
+  
+  .memory-card.flip {
+    transform: rotateY(180deg);
+  }
+  
+  .front-face,
+  .back-face {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: absolute;
+    border-radius: 5px;
+    background: #1C7CCC;
+    backface-visibility: hidden;
+  }
+  
+  .front-face {
+    transform: rotateY(180deg);
+  }
+
+  .score-panel {
+    position: fixed;
+    top: 50px; /* Позиционирование относительно верхней части страницы */
+    left: 50%; /* Размещение по горизонтали по центру */
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    z-index: 1; /* Чтобы счетчики были над картами */
+    text-align: center;
+    
+  }
+  
+  .moves,
+  .timer {
+    font-size: 24px; /* Размер шрифта */
+    color: white; /* Белый цвет текста */
+    margin-bottom: 10px; /* Добавление небольшого отступа между счетчиками */
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000,  
+                1px -1px 0 #000,
+               -1px  1px 0 #000,
+                1px  1px 0 #000;
+                font-family: 'Roboto', sans-serif;
+  }
+
+
+
+
+  /* Стили для сообщения с поздравлениями */
+.congratulations {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.congratulations h2 {
+  margin-bottom: 10px;
+}
+
+.congratulations button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Скрытие сообщения с поздравлениями при загрузке страницы */
+.hidden {
+  display: none;
+}
+
+.matched {
+  pointer-events: none; /* Блокировка событий мыши для уже найденных пар */
+}
+
+
+.hint {
+  border: 3px solid yellow;
+}
+
+
+.hint-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #66e980;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10%; /* Делаем кнопку овальной */
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+  border-color: #000;
+}
+
+.hint-button:hover {
+  background-color: #ff6666;
+}
+
